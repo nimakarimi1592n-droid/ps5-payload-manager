@@ -29,6 +29,7 @@
 
 INCASSET(param_json, "assets/param.json");
 INCASSET(icon0_png, "assets/icon0.png");
+INCASSET(pic0_png, "assets/pic0.png");
 
 int sceAppInstUtilInitialize(void);
 int sceAppInstUtilTerminate(void);
@@ -108,6 +109,8 @@ int pldmgr_install_app_if_needed(void) {
            title_id);
   snprintf(icon_path, sizeof(icon_path), "/user/app/%s/sce_sys/icon0.png",
            title_id);
+  snprintf(icon_path, sizeof(pic_path), "/user/app/%s/sce_sys/pic0.png",
+           title_id);
 
   int update_needed = 0;
   struct stat st;
@@ -118,6 +121,8 @@ int pldmgr_install_app_if_needed(void) {
       update_needed = 1;
     if (needs_update(icon_path, icon0_png, icon0_png_size))
       update_needed = 1;
+    if (needs_update(pic_path, pic0_png, pic0_png_size))
+      update_needed = 1;
   }
 
   if (!update_needed) {
@@ -125,11 +130,11 @@ int pldmgr_install_app_if_needed(void) {
   }
 
   if (stat(base_dir, &st) == 0) {
-    pldmgr_log("[PLDMGR] Updating existing app launcher (%s)...\n", title_id);
-    pldmgr_notify("Updating Payload Manager App...");
+    pldmgr_log("[NIMA1592] Updating existing app launcher (%s)...\n", title_id);
+    pldmgr_notify("Updating NIMA1592 Payload Manager App...");
   } else {
-    pldmgr_log("[PLDMGR] Installing browser launcher app (%s)...\n", title_id);
-    pldmgr_notify("Installing Payload Manager App...");
+    pldmgr_log("[NIMA1592] Installing browser launcher app (%s)...\n", title_id);
+    pldmgr_notify("Installing NIMA1592 Payload Manager App...");
   }
 
   int err;
@@ -172,8 +177,8 @@ int pldmgr_install_app_if_needed(void) {
     return -1;
   }
 
-  pldmgr_log("[PLDMGR] Launcher app installed successfully.\n");
-  pldmgr_notify("Payload Manager App Ready!");
+  pldmgr_log("[NIMA1592] Launcher app installed successfully.\n");
+  pldmgr_notify("NIMA1592 Payload Manager App Ready!");
   
   sceAppInstUtilTerminate();
   return 0;
