@@ -55,7 +55,7 @@ frontend-build:
 	COMMIT=$$(git rev-parse --short HEAD 2>/dev/null || echo "unknown"); \
 	git diff --quiet || COMMIT="DEV"; \
 	DATE=$$(date -u +"%Y-%m-%d %H:%M:%S UTC"); \
-	TITLE="Payload Manager v$$VERSION by PLK ($$COMMIT, built at $$DATE)"; \
+	TITLE=" NIMA1592 Payload Manager $$VERSION"; \
 	echo "Updating title in index.html to: $$TITLE"; \
 	TMP=$$(mktemp "$${TMPDIR:-/tmp}/pldmgr.XXXXXX"); \
 	sed "s|\[\[TITLE_PLACEHOLDER\]\]|$$TITLE|g" frontend/dist/index.html > $$TMP; \
