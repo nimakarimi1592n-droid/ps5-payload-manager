@@ -29,7 +29,6 @@
 
 INCASSET(param_json, "assets/param.json");
 INCASSET(icon0_png, "assets/icon0.png");
-INCASSET(pic0_png, "assets/pic0.png");
 
 int sceAppInstUtilInitialize(void);
 int sceAppInstUtilTerminate(void);
@@ -109,8 +108,6 @@ int pldmgr_install_app_if_needed(void) {
            title_id);
   snprintf(icon_path, sizeof(icon_path), "/user/app/%s/sce_sys/icon0.png",
            title_id);
-  snprintf(icon_path, sizeof(pic_path), "/user/app/%s/sce_sys/pic0.png",
-           title_id);
 
   int update_needed = 0;
   struct stat st;
@@ -120,8 +117,6 @@ int pldmgr_install_app_if_needed(void) {
     if (needs_update(param_path, param_json, param_json_size))
       update_needed = 1;
     if (needs_update(icon_path, icon0_png, icon0_png_size))
-      update_needed = 1;
-    if (needs_update(pic_path, pic0_png, pic0_png_size))
       update_needed = 1;
   }
 
